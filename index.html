@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Normal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangkap Aku!</title>
     <style>
-        /* Animasi CSS yang sangat berat */
-        @keyframes spin {
-            0% { transform: rotate(0deg) scale(1); filter: blur(10px); }
-            100% { transform: rotate(360deg) scale(2); filter: blur(20px); }
-        }
-        .beban-berat {
-            width: 100vw;
-            height: 100vh;
-            background: red;
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: spin 0.001s infinite linear;
-            opacity: 0.01;
+        body { background: #111; color: white; text-align: center; overflow: hidden; font-family: sans-serif; }
+        #kabur {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: red; color: white; padding: 20px; border-radius: 10px;
+            font-size: 20px; font-weight: bold;
+            transition: top 0.1s, left 0.1s;
         }
     </style>
 </head>
 <body>
-    <h1>Halaman Normal</h1>
-    <p>Ini halaman biasa, kok.</p>
+    <h2>Bisa sentuh tombol ini?</h2>
     
+    <div id="kabur">SENTUH AKU!</div>
+
     <script>
-        setTimeout(function() {
-            // Membuat 5000 elemen raksasa yang berputar sangat cepat secara bersamaan
-            for (let i = 0; i < 5000; i++) {
-                let div = document.createElement('div');
-                div.className = 'beban-berat';
-                document.body.appendChild(div);
-            }
-        }, 1000);
+        const btn = document.getElementById('kabur');
+        
+        // Mendeteksi sentuhan di HP
+        btn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Mencegah tombol terklik
+            
+            // Pindah ke posisi random (disesuaikan dengan ukuran layar HP)
+            const maxX = window.innerWidth - 100;
+            const maxY = window.innerHeight - 100;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+            btn.style.transform = 'none';
+        });
     </script>
 </body>
 </html>
