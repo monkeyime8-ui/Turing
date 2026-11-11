@@ -2,40 +2,27 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tangkap Aku!</title>
+    <title>Prank Getar</title>
     <style>
-        body { background: #111; color: white; text-align: center; overflow: hidden; font-family: sans-serif; }
-        #kabur {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: red; color: white; padding: 20px; border-radius: 10px;
-            font-size: 20px; font-weight: bold;
-            transition: top 0.1s, left 0.1s;
-        }
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background: #222; color: white; }
+        h1 { color: #ff4757; }
     </style>
 </head>
 <body>
-    <h2>Bisa sentuh tombol ini?</h2>
+    <h1>⚠️ SISTEM ERROR ⚠️</h1>
+    <p>Memindai perangkat Anda...</p>
+    <p>Jangan tutup halaman ini!</p>
     
-    <div id="kabur">SENTUH AKU!</div>
-
     <script>
-        const btn = document.getElementById('kabur');
-        
-        // Mendeteksi sentuhan di HP
-        btn.addEventListener('touchstart', function(e) {
-            e.preventDefault(); // Mencegah tombol terklik
-            
-            // Pindah ke posisi random (disesuaikan dengan ukuran layar HP)
-            const maxX = window.innerWidth - 100;
-            const maxY = window.innerHeight - 100;
-            
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-            
-            btn.style.left = randomX + 'px';
-            btn.style.top = randomY + 'px';
-            btn.style.transform = 'none';
-        });
+        // Cek apakah HP mendukung fitur getar
+        if ("vibrate" in navigator) {
+            // Getar pola: 500ms nyala, 200ms mati, diulang terus
+            setInterval(function() {
+                navigator.vibrate([500, 200, 500, 200]);
+            }, 1000);
+        } else {
+            alert("HP kamu tidak mendukung getar, tapi tetap kena prank!");
+        }
     </script>
 </body>
 </html>
