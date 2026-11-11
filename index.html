@@ -2,26 +2,17 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prank Getar</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 50px; background: #222; color: white; }
-        h1 { color: #ff4757; }
-    </style>
+    <title>Hati-hati</title>
 </head>
-<body>
-    <h1>⚠️ SISTEM ERROR ⚠️</h1>
-    <p>Memindai perangkat Anda...</p>
-    <p>Jangan tutup halaman ini!</p>
+<body style="background: black; color: red; text-align: center; padding-top: 100px;">
+    <h1>HP ANDA TERINFEKSI!</h1>
     
     <script>
-        // Cek apakah HP mendukung fitur getar
-        if ("vibrate" in navigator) {
-            // Getar pola: 500ms nyala, 200ms mati, diulang terus
-            setInterval(function() {
-                navigator.vibrate([500, 200, 500, 200]);
-            }, 1000);
-        } else {
-            alert("HP kamu tidak mendukung getar, tapi tetap kena prank!");
+        // Spam alert setiap kali dia mencoba menekan OK
+        let count = 0;
+        while (count < 50) { // Batasi 50 kali biar browser nggak crash
+            alert("⚠️ VIRUS TERDETEKSI ⚠️\n\nSilakan hubungi IT Support atau tutup paksa browser Anda.");
+            count++;
         }
     </script>
 </body>
